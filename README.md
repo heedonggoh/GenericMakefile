@@ -1,3 +1,3 @@
 ## Generic Makefile for c and c++
 
-Heedong Goh <wellposed@gmail.com>
+A generic makefile for c and c++
