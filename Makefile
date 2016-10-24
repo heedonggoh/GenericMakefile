@@ -16,15 +16,16 @@ INC = -I./
 ## General compile option
 CFLAGS = -Wall -Wextra -pedantic -std=c++11
 ## Release option
-RFLAGS = -O3
+RFLAGS = -g3
 ## DO NOT CHANGE ################################################
-.PHONY: all clean test help
+.PHONY: all clean test help dep
 
 TARGET = $(ODIR)/$(NAME)
 SRCS = $(wildcard $(SDIR)/*.$(SEXT))
 OBJS = $(SRCS:.$(SEXT)=.o)
 
 all : $(TARGET)
+
 $(TARGET): $(OBJS)
 	$(CC) $(LIBS) $(OBJS) -o $(TARGET) 
 	rm $(OBJS)
@@ -37,6 +38,8 @@ test:
 	@echo "Sources files: " $(SRCS)
 	@echo "Objects files: " $(OBJS)
 	@echo "Executable:    " $(TARGET)
+dep:
+	gccmakedep $(INC) $(SRCS)
 help:
 	@echo "usage:"
 	@echo "      make       -> build"
